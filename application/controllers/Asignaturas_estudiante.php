@@ -5,6 +5,9 @@ class Asignaturas_estudiante extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        $loggin = $this->session->userdata('currently_logged_in');
+        if($loggin!=1)
+            redirect(base_url());
         $this->load->model(array('Asignatura_model','Asignaturas_estudiante_model','Lugare_model','Students_model'));
     } 
 
