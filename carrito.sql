@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-11-2023 a las 04:02:52
+-- Tiempo de generación: 25-11-2023 a las 05:54:47
 -- Versión del servidor: 5.7.33
 -- Versión de PHP: 7.4.19
 
@@ -45,7 +45,8 @@ CREATE TABLE `grades` (
 
 INSERT INTO `grades` (`grade_id`, `student_id`, `location_id`, `subject_id`, `theory_grade`, `practice_grade`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 1, 1, '0.00', '0.00', '2023-11-24 01:00:30', '2023-11-24 01:00:30', NULL),
-(3, 1, 2, 1, '5.00', '6.00', '2023-11-24 01:00:30', '2023-11-24 16:52:52', NULL);
+(3, 1, 2, 1, '5.00', '6.00', '2023-11-24 01:00:30', '2023-11-24 16:52:52', NULL),
+(4, 3, 2, 1, '20.00', '30.00', '2023-11-25 05:43:35', '2023-11-25 05:44:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,7 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`student_id`, `user_id`, `first_name`, `last_name`, `email`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, NULL, 'JOHN', 'Quezada', 'john_quezada@hotmail.com', '2023-11-22 19:33:07', '2023-11-24 19:45:59', NULL),
 (2, NULL, 'nombre', 'apellido', 'jq@gique.com', '2023-11-24 20:19:53', '2023-11-24 20:19:53', NULL),
-(3, 3, 'nombre', 'apellido', 'xdk@hotmail.com', '2023-11-24 20:22:22', '2023-11-24 20:22:22', NULL);
+(3, 3, 'nombre1', 'apellido1', 'xdk@hotmail.com', '2023-11-24 20:22:22', '2023-11-25 05:43:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -173,7 +174,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `mail`, `password`, `role`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'john_quezada@hotmail.com', '$2y$10$gOYmB.U2YMqDElOq/xFFzu7MlxDjoCXDLgO0IHVNVmWxEe02bGN5W', 'Docente', '2023-11-19 17:01:03', '2023-11-19 17:01:03', NULL),
-(2, 'xgranda@outlook.com', '$2y$10$9p0RJxgqRgyXSr.igEBu3eifX00VtZMTz3KHYfz8Ymoh7HCUjEUni', 'Docente', '2023-11-24 19:41:39', '2023-11-24 19:43:31', NULL),
+(2, 'xgranda@outlook.com', '$2y$10$9p0RJxgqRgyXSr.igEBu3eifX00VtZMTz3KHYfz8Ymoh7HCUjEUni', 'Estudiante', '2023-11-24 19:41:39', '2023-11-25 05:39:19', NULL),
 (3, 'xdk@hotmail.com', '$2y$10$VrDa5bV0aXZnvkwjn0YZUezAu.WcpFiFCPnNupcC.PKRQjU1U03Tu', 'Estudiante', '2023-11-24 20:22:22', '2023-11-24 20:22:22', NULL);
 
 --
@@ -228,7 +229,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `locations`
