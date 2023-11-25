@@ -4,12 +4,13 @@ class Usuario extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        $loggin = $this->session->userdata('currently_logged_in');
+        if($loggin!=1)
+            redirect(base_url());
         $this->load->model('Usuario_model');
     } 
 
-    /*
-     * Listing of usuarios
-     */
+
     function index()
     {
         $data['usuarios'] = $this->Usuario_model->get_all_usuarios();
@@ -18,26 +19,20 @@ class Usuario extends CI_Controller{
         $this->load->view('partes/main',$data);
     }
 
-    /*
-     * Adding a new usuario
-     */
     function add()
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('contrasena','Contrasena','required|min_length[5]');
-		$this->form_validation->set_rules('email','Email','is_unique[email]|required|valid_email');
-		$this->form_validation->set_rules('nombre','Nombre','required|min_length[3]');
+		$this->form_validation->set_rules('password','Contrasena','required|min_length[5]');
+		$this->form_validation->set_rules('mail','mail','is_unique[users.mail]|required|valid_email');
 		
 		if($this->form_validation->run())     
         {   
             $params = array(
-				'nombre' => $this->input->post('nombre'),
-				'email' => $this->input->post('email'),
-				'rol' => $this->input->post('rol'),
-				'contrasena' => $this->input->post('contrasena'),
-				'obs' => $this->input->post('obs'),
-            );
+				'mail' => $this->input->post('mail'),
+				'role' => 'Docente',
+				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
+		    );
             
             $usuario_id = $this->Usuario_model->add_usuario($params);
             redirect('usuario/index');
@@ -49,12 +44,10 @@ class Usuario extends CI_Controller{
         }
     }  
 
-    /*
-     * Editing a usuario
-     */
+
     function edit($id)
     {   
-        // check if the usuario exists before trying to edit it
+
         $data['usuario'] = $this->Usuario_model->get_usuario($id);
         
         if(isset($data['usuario']['id']))
@@ -88,14 +81,10 @@ class Usuario extends CI_Controller{
             show_error('The usuario you are trying to edit does not exist.');
     } 
 
-    /*
-     * Deleting usuario
-     */
+
     function remove($id)
     {
         $usuario = $this->Usuario_model->get_usuario($id);
-
-        // check if the usuario exists before trying to delete it
         if(isset($usuario['id']))
         {
             $this->Usuario_model->delete_usuario($id);

@@ -5,12 +5,12 @@ class Nota extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        $loggin = $this->session->userdata('currently_logged_in');
+        if($loggin!=1)
+            redirect(base_url());
         $this->load->model('Nota_model');
     } 
 
-    /*
-     * Listing of notas
-     */
     function index()
     {
         $data['notas'] = $this->Nota_model->get_all_notas();
@@ -19,9 +19,7 @@ class Nota extends CI_Controller{
         $this->load->view('partes/main',$data);
     }
 
-    /*
-     * Adding a new nota
-     */
+
     function add()
     {   
         $this->load->library('form_validation');
@@ -53,12 +51,10 @@ class Nota extends CI_Controller{
         }
     }  
 
-    /*
-     * Editing a nota
-     */
+
     function edit($id)
     {   
-        // check if the nota exists before trying to edit it
+
         $data['nota'] = $this->Nota_model->get_nota($id);
         
         if(isset($data['nota']['id']))
@@ -95,14 +91,11 @@ class Nota extends CI_Controller{
             show_error('The nota you are trying to edit does not exist.');
     } 
 
-    /*
-     * Deleting nota
-     */
+
     function remove($id)
     {
         $nota = $this->Nota_model->get_nota($id);
 
-        // check if the nota exists before trying to delete it
         if(isset($nota['id']))
         {
             $this->Nota_model->delete_nota($id);

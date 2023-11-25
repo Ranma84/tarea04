@@ -8,17 +8,10 @@
 			<div class="box-body">
 				<div class="row clearfix">
 					<div class="col-md-6">
-						<label for="nombre" class="control-label"><span class="text-danger">*</span>Nombre</label>
+						<label for="mail" class="control-label"><span class="text-danger">*</span>Email</label>
 						<div class="form-group">
-							<input type="text" name="nombre" value="<?= ($this->input->post('nombre') ? $this->input->post('nombre') : $usuario['nombre']); ?>" class="form-control" id="nombre" />
-							<span class="text-danger"><?= form_error('nombre');?></span>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<label for="email" class="control-label"><span class="text-danger">*</span>Email</label>
-						<div class="form-group">
-							<input type="text" name="email" value="<?= ($this->input->post('email') ? $this->input->post('email') : $usuario['email']); ?>" class="form-control" id="email" />
-							<span class="text-danger"><?= form_error('email');?></span>
+							<input type="text" name="mail" value="<?= ($this->input->post('mail') ? $this->input->post('mail') : $usuario['mail']); ?>" class="form-control" id="mail" />
+							<span class="text-danger"><?= form_error('mail');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">

@@ -2,9 +2,9 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Notas Listing</h3>
+                <h3 class="box-title">Listado Notas</h3>
             	<div class="box-tools">
-                    <a href="<?= site_url('nota/add'); ?>" class="btn btn-success btn-sm">Add</a> 
+                    <a href="<?= site_url('nota/add'); ?>" class="btn btn-success btn-sm">Agregar</a> 
                 </div>
             </div>
             <div class="box-body">
@@ -27,8 +27,8 @@
 						<td><?= $n['practica']; ?></td>
 						<td><?= $n['obs']; ?></td>
 						<td>
-                            <a href="<?= site_url('nota/edit/'.$n['id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
-                            <a href="<?= site_url('nota/remove/'.$n['id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <a href="<?= site_url('nota/edit/'.$n['id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> 
+                            <a href="<?= site_url('nota/remove/'.$n['id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a>
                         </td>
                     </tr>
                     <?php } ?>

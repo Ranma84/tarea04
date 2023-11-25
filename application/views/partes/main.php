@@ -43,7 +43,7 @@
                                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="<?= base_url('login/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -115,19 +115,6 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Nota</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?= site_url('nota/add');?>"><i class="fa fa-plus"></i> Añadir</a>
-                                </li>
-								<li>
-                                    <a href="<?= site_url('nota/index');?>"><i class="fa fa-list-ul"></i> Lista</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
                                 <i class="fa fa-desktop"></i> <span>Usuario</span>
                             </a>
                             <ul class="treeview-menu">
@@ -141,11 +128,14 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Login</span>
+                                <i class="fa fa-desktop"></i> <span>Estudiante</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?= site_url('login');?>"><i class="fa fa-plus"></i> Login</a>
+                                    <a href="<?= site_url('students/add');?>"><i class="fa fa-plus"></i> Añadir</a>
+                                </li>
+								<li>
+                                    <a href="<?= site_url('students/index');?>"><i class="fa fa-list-ul"></i> Lista</a>
                                 </li>
 							</ul>
                         </li>

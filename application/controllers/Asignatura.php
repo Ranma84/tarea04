@@ -8,9 +8,7 @@ class Asignatura extends CI_Controller{
         $this->load->model('Asignatura_model');
     } 
 
-    /*
-     * Listing of asignaturas
-     */
+
     function index()
     {
         $data['asignaturas'] = $this->Asignatura_model->get_all_asignaturas();
@@ -19,9 +17,7 @@ class Asignatura extends CI_Controller{
         $this->load->view('partes/main',$data);
     }
 
-    /*
-     * Adding a new asignatura
-     */
+
     function add()
     {   
         $this->load->library('form_validation');
@@ -31,8 +27,8 @@ class Asignatura extends CI_Controller{
 		if($this->form_validation->run())     
         {   
             $params = array(
-				'nombre' => $this->input->post('nombre'),
-				'obs' => $this->input->post('obs'),
+				'subject_name' => $this->input->post('nombre'),
+				'subjects_obs' => $this->input->post('obs'),
             );
             
             $asignatura_id = $this->Asignatura_model->add_asignatura($params);
@@ -45,25 +41,20 @@ class Asignatura extends CI_Controller{
         }
     }  
 
-    /*
-     * Editing a asignatura
-     */
+
     function edit($id)
     {   
-        // check if the asignatura exists before trying to edit it
+
         $data['asignatura'] = $this->Asignatura_model->get_asignatura($id);
-        
-        if(isset($data['asignatura']['id']))
+        if(isset($data['asignatura']['subject_id']))
         {
             $this->load->library('form_validation');
-
-			$this->form_validation->set_rules('nombre','Nombre','required');
-		
+			$this->form_validation->set_rules('nombre','Nombre','required');		
 			if($this->form_validation->run())     
             {   
                 $params = array(
-					'nombre' => $this->input->post('nombre'),
-					'obs' => $this->input->post('obs'),
+					'subject_name' => $this->input->post('nombre'),
+					'subjects_obs' => $this->input->post('obs'),
                 );
 
                 $this->Asignatura_model->update_asignatura($id,$params);            
@@ -77,17 +68,14 @@ class Asignatura extends CI_Controller{
         }
         else
             show_error('The asignatura you are trying to edit does not exist.');
+
     } 
 
-    /*
-     * Deleting asignatura
-     */
+
     function remove($id)
     {
         $asignatura = $this->Asignatura_model->get_asignatura($id);
-
-        // check if the asignatura exists before trying to delete it
-        if(isset($asignatura['id']))
+        if(isset($asignatura['subject_id']))
         {
             $this->Asignatura_model->delete_asignatura($id);
             redirect('asignatura/index');

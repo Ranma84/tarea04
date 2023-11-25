@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Nota Edit</h3>
+              	<h3 class="box-title">Nota Editar</h3>
             </div>
 			<?= form_open('nota/edit/'.$nota['id']); ?>
 			<div class="box-body">
@@ -54,7 +54,7 @@
 			</div>
 			<div class="box-footer">
             	<button type="submit" class="btn btn-success">
-					<i class="fa fa-check"></i> Save
+					<i class="fa fa-check"></i> Guardar
 				</button>
 	        </div>				
 			<?= form_close(); ?>

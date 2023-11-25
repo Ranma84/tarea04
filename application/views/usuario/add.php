@@ -8,43 +8,39 @@
           	<div class="box-body">
           		<div class="row clearfix">
 					<div class="col-md-6">
-						<label for="nombre" class="control-label"><span class="text-danger">*</span>Nombre</label>
+						<label for="mail" class="control-label"><span class="text-danger">*</span>Email</label>
 						<div class="form-group">
-							<input type="text" name="nombre" value="<?= $this->input->post('nombre'); ?>" class="form-control" id="nombre" />
-							<span class="text-danger"><?= form_error('nombre');?></span>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<label for="email" class="control-label"><span class="text-danger">*</span>Email</label>
-						<div class="form-group">
-							<input type="text" name="email" value="<?= $this->input->post('email'); ?>" class="form-control" id="email" />
-							<span class="text-danger"><?= form_error('email');?></span>
+							<input require type="text" name="mail" value="<?= $this->input->post('mail'); ?>" class="form-control" id="mail" />
+							<span class="text-danger"><?= form_error('mail');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="rol" class="control-label">Rol</label>
 						<div class="form-group">
-							<input type="text" name="rol" value="<?= $this->input->post('rol'); ?>" class="form-control" id="rol" />
+							<select disabled name="rol" class="form-control">
+								<?php 
+								$all_roll=array(0=>'Docente',1=>'Estudiante');
+								foreach($all_roll as $clave => $roles)
+								{
+									$selected = ($clave == $this->input->post('rol')) ? ' selected="selected"' : "";
+									echo '<option value="'.$clave.'" >'.$roles.'</option>';
+								} 
+								?>
+							</select>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="contrasena" class="control-label"><span class="text-danger">*</span>Contrasena</label>
+						<label for="password" class="control-label"><span class="text-danger">*</span>Contrasena</label>
 						<div class="form-group">
-							<input type="text" name="contrasena" value="<?= $this->input->post('contrasena'); ?>" class="form-control" id="contrasena" />
-							<span class="text-danger"><?= form_error('contrasena');?></span>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<label for="obs" class="control-label">Obs</label>
-						<div class="form-group">
-							<textarea name="obs" class="form-control" id="obs"><?= $this->input->post('obs'); ?></textarea>
+							<input require type="password" name="password" value="<?= $this->input->post('password'); ?>" class="form-control" id="password" />
+							<span class="text-danger"><?= form_error('password');?></span>
 						</div>
 					</div>
 				</div>
 			</div>
           	<div class="box-footer">
             	<button type="submit" class="btn btn-success">
-            		<i class="fa fa-check"></i> Save
+            		<i class="fa fa-check"></i> Guardar
             	</button>
           	</div>
             <?= form_close(); ?>
